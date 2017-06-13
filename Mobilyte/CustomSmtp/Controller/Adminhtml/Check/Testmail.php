@@ -72,7 +72,7 @@ class Testmail extends \Magento\Backend\App\Action
         $testMail->setFrom($uname, $name);
         $testMail->setSubject('Test SMTP Email from Mobilyte');
         $testMail->addTo($to, $to);
-        $testMail->setBodyText('Thank you for choosing Mobilyte SMTP Settings Extension.');
+        $testMail->setBodyText('Thank you for choosing Mobilyte SMTP Settings Extension. <br><br>Prepared By : Mahak Choudhary');
         
         try {
             if (!$testMail->send($transport) instanceof \Zend_Mail){}
