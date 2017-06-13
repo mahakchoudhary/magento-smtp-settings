@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+    	<tab id="mobilyte" translate="label" sortOrder="100">
+            <label>SMTP Settings</label>
+        </tab>
+        <section id="customsmtp" translate="label" type="text" sortOrder="910" showInDefault="1" showInWebsite="1" showInStore="1">
+        	<label>Custom Smtp</label>
+            <tab>mobilyte</tab>
+            <resource>Mobilyte_CustomSmtp::mobilyte</resource>
+            <group id="mobilytecustomsmtp" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>SMPT Settings</label>
+                
+                <field id="host" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SMTP Host : </label>
+                    <comment>Use "smtp.yoursmtphost.com" without http</comment>
+                </field>
+                
+                <field id="username" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Username : </label>
+                    <comment>Email Address (SMPT user name)</comment>
+                </field>
+                
+                <field id="password" translate="label" type="password" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password : </label>
+                    <comment>SMPT Password</comment>
+                </field>
+
+                <field id="auth" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auth Method : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
+                    <comment>SMTP Authentication Type</comment>
+                </field>
+                
+                <field id="ssltype" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SSL type : </label>
+                    <source_model>Mobilyte\CustomSmtp\Model\Config\Authentication</source_model>
+                    <comment>SSL Authentication Type</comment>
+                </field>
+
+                <field id="port" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Port : </label>
+                    <comment>SMTP default Port 25 </comment>
+                </field>
+                
+                <field id="email" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Id : </label>
+                    <comment>Email Id to send test mail with current configuration.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Design\Robots</source_model>
+                </field>
+                <field id="button" translate="label" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Click to Test Configuration : </label>
+                    <frontend_model>Mobilyte\CustomSmtp\Block\Adminhtml\SystemConfig\Check</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

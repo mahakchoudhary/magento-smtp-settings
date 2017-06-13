@@ -1,0 +1,37 @@
+<?php
+$jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
+?>
+<?php echo $block->getBlockBtnHtml() ?>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert'
+    ], function ($, alert) {
+        window.MobilyteCustomSmtpDebugTest = function()
+        {
+            var poastData = {
+                    form_key: FORM_KEY,
+                    host:$('#customsmtp_mobilytecustomsmtp_host').val(),
+                    uname:$('#customsmtp_mobilytecustomsmtp_username').val(),
+                    pass:$('#customsmtp_mobilytecustomsmtp_password').val(),
+                    auth: $('#customsmtp_mobilytecustomsmtp_auth').val(),
+                    ssltype:$('#customsmtp_mobilytecustomsmtp_ssltype').val(),
+                    port:$('#customsmtp_mobilytecustomsmtp_port').val(),
+                    email:$('#customsmtp_mobilytecustomsmtp_email').val()
+                };
+            $.ajax({
+                url: '<?php echo $block->getTestMailUrl() ?>',
+                dataType: 'html',
+                type: 'post',
+                data: poastData,
+                showLoader: true
+            }).done(function(response) {
+                alert({
+                    title:'Response',
+                    content:response
+                });
+            });
+        }
+    });
+</script>
